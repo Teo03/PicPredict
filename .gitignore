@@ -1,0 +1,8 @@
+.vscode
+__pycache__
+.ipynb_checkpoints/
+
+/raw/*
+!/raw/.gitkeep
+/data/*
+!/data/.gitkeep
