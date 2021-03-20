@@ -16,16 +16,12 @@ def download_data():
         urllib.request.urlretrieve(final_url, f'./{NPY_DIR}/{c}.npy')
 
 def create_dataset():
-    npy_files = glob.glob(os.path.join(NPY_DIR, '*.npy'))
-
     # initialize X with one empty drawing
     X = np.empty([0, 784])
     y = np.empty([0])
 
-    class_names = []
-
-    for idx, file in enumerate(npy_files):
-        file_data = np.load(file)
+    for idx, file in enumerate(CLASSES):
+        file_data = np.load(f'./{NPY_DIR}/{file}.npy')
         # every drawing (total drawings: 144721) in file_data has 784 elements
 
         # create indexes for each of the drawings (total drawings: file_data.shape[0])
@@ -35,7 +31,7 @@ def create_dataset():
         indices = np.random.choice(indices, ITEMS_PER_CLASS, replace=False)
         file_data = file_data[indices]
 
-        # create 144721 (file_data.shape[0]) labels set to idx (0,1,2..)
+        # create 144721 (file_data.shape[0]) labels set to idx (0 or 1,2..)
         labels = np.full(file_data.shape[0], idx)
         
         # concatenate new drawing to X
@@ -43,10 +39,7 @@ def create_dataset():
         # add the labels on the same axis (so they are inline)
         y = np.append(y, labels)
 
-        class_name, _ = os.path.splitext(os.path.basename(file))
-        class_names.append(class_name)
-
-        print(f'loaded: {class_name}')
+        print(f'loaded: {file}')
 
     # after loading, save and randomize the datasets
 
@@ -64,7 +57,13 @@ def create_dataset():
     X_test = X[0:split_index, :]
     y_test = y[0:split_index]
 
-    np.savez_compressed(f'{DATA_DIR}/train', data=X_train, target=y_train)
-    np.savez_compressed(f'{DATA_DIR}/test', data=X_test, target=y_test)
+    np.savez_compressed(f'{DATA_DIR}/train', drawings=X_train, labels=y_train)
+    np.savez_compressed(f'{DATA_DIR}/test', drawings=X_test, labels=y_test)
 
     print(f'train/test data saved to ./{DATA_DIR}')
+    
+def load_dataset(dataset_type):
+    # load the saved data and return it as X, y for train or test
+    data = np.load(os.path.join(DATA_DIR, f'{dataset_type}.npz'))
+    
+    return data["drawings"].astype('float32'), data["labels"].astype('int64')

@@ -11,7 +11,20 @@ CLASSES = [
     'car'
 ]
 
+MODEL_CFG = {
+    'epochs': 10,
+    'batch_size': 128,
+    'learning_rate': 0.001,
+    'momentum': 0.9,
+    'weight_decay': 5e-4,
+    'lr_decay_step': [12, 20],
+    'gamma': 0.001
+}
+
+IMAGE_SIZE = 28
 TEST_PCT = 0.2
 ITEMS_PER_CLASS = 5000
+
 NPY_DIR = 'raw'
 DATA_DIR = 'data'
+MODELS_DIR = 'models'
