@@ -1,3 +1,4 @@
+# add or remove classes for download and inference
 CLASSES = [
     'eye',
     'bicycle',
@@ -11,8 +12,9 @@ CLASSES = [
     'car'
 ]
 
+# configure model params
 MODEL_CFG = {
-    'epochs': 10,
+    'epochs': 15,
     'batch_size': 128,
     'learning_rate': 0.001,
     'momentum': 0.9,
