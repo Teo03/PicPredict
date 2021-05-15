@@ -1,7 +1,6 @@
 import urllib.request
 from config import *
 import numpy as np
-import glob
 import os
 
 def download_data():

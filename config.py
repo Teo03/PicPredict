@@ -23,10 +23,12 @@ MODEL_CFG = {
     'gamma': 0.001
 }
 
+# configure image processing params
 IMAGE_SIZE = 28
 TEST_PCT = 0.2
 ITEMS_PER_CLASS = 5000
 
+# save locations
 NPY_DIR = 'raw'
 DATA_DIR = 'data'
 MODELS_DIR = 'models'
