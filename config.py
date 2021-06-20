@@ -14,9 +14,9 @@ CLASSES = [
 
 # configure model params
 MODEL_CFG = {
-    'epochs': 15,
+    'epochs': 30,
     'batch_size': 128,
-    'learning_rate': 0.001,
+    'learning_rate': 0.01,
     'momentum': 0.9,
     'weight_decay': 5e-4,
     'lr_decay_step': [12, 20],

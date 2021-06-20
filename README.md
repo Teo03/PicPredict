@@ -18,7 +18,7 @@ Simple app that predicts a given image drawn by the user from number of classes.
 
 Check out the demo: https://teo03.github.io/PicPredict/ (best viewable on desktop)
 
-Currently the model is ~89MB and takes a while to download. 
+The web demo can be found in the `/docs` folder 
 
 ### Getting started
 

@@ -26,7 +26,7 @@ let lastY = 0;
 
 // load model
 const sess = new onnx.InferenceSession();
-const loadingModelPromise = sess.loadModel("../models/onnx_model.onnx");
+const loadingModelPromise = sess.loadModel("./onnx_model.onnx");
 
 async function updatePredictions() {
   // get predictions
